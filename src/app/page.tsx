@@ -29,7 +29,7 @@ useEffect(() => {
   };
 }, []);
 
-const handleSubmit = async (e: any) => {
+const handleClick = async (e: React.MouseEvent<HTMLElement>) => {
   e.preventDefault();
   try {
     const response = await fetch(`/api/github`, {
@@ -50,7 +50,7 @@ const handleSubmit = async (e: any) => {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
  test and {JSON.stringify(message)}
-    <button onClick={handleSubmit} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Sending POST</button>
+    <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Sending POST</button>
     </div>
   );
 }
