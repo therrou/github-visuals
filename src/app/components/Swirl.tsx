@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { createNoise3D } from 'simplex-noise'
 import { motion } from 'framer-motion'
 import { cn } from '../utils/classes'
+/* eslint-disable */
 
 interface ParticleProps {
     x: number
@@ -43,16 +44,16 @@ const Swirl: React.FC<SwirlProps & any> = (props) => {
 
     const particlePropCount = 9
     const particleCount =
-        Math.floor(props.particleCount * randomValues[0]) || 700
+        Math.floor( randomValues[0]) || 700
     const particlePropsLength = particleCount * particlePropCount
-    const baseTTL = Math.floor(props.baseTTL * randomValues[1]) || 100
-    const rangeTTL = Math.floor(props.rangeTTL * randomValues[2]) || 500
-    const baseSpeed = props.baseSpeed * randomValues[3] || 0.1
-    const rangeSpeed = props.rangeSpeed * randomValues[4] || 1
-    const baseSize = props.baseSize * randomValues[5] || 1
-    const rangeSize = props.rangeSize * randomValues[6] || 10
-    const baseHue = Math.floor(props.baseHue * randomValues[7]) || 10
-    const rangeHue = Math.floor(props.rangeHue * randomValues[8]) || 100
+    const baseTTL = Math.floor(randomValues[1]) || 100
+    const rangeTTL = Math.floor( randomValues[2]) || 500
+    const baseSpeed = randomValues[3] || 0.1
+    const rangeSpeed =  randomValues[4] || 1
+    const baseSize =  randomValues[5] || 1
+    const rangeSize =  randomValues[6] || 10
+    const baseHue = Math.floor(randomValues[7]) || 10
+    const rangeHue = Math.floor(randomValues[8]) || 100
 
     const noiseSteps = 2
     const xOff = 0.0025

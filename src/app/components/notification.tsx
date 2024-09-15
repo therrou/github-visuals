@@ -4,6 +4,8 @@ import React, { useEffect } from 'react'
 import supabase from '../utils/supabase'
 import Swirl from './Swirl'
 
+/* eslint-disable */
+
 export const NotificationToast = ({ data }: any) => {
     const [notifications, setNotifications] = React.useState(data)
     const [isMounted, setIsMounted] = React.useState(false)
@@ -43,6 +45,7 @@ export const NotificationToast = ({ data }: any) => {
 
     useEffect(() => {
         setIsMounted(true)
+        setNotifications(data)
     }, [])
 
   
@@ -67,11 +70,6 @@ export const NotificationToast = ({ data }: any) => {
             })
 
         }
-
-
-  
-
-   
     }, [isMounted])
 
     return (

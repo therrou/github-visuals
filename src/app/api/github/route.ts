@@ -1,13 +1,13 @@
 import supabase from '@/app/utils/supabase'
 import { v4 as uuidv4 } from 'uuid'
 
-export async function POST(request: Request, response: Response) {
+export async function POST(request: Request) {
     const githubEvent = request.headers.get('x-github-event')
     let payload = null
 
     if (githubEvent !== null) {
         payload = await request.json()
-        const { data, error } = await supabase
+        await supabase
             .from('github_notifications')
             .insert([
                 {
