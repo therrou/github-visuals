@@ -1,56 +1,17 @@
-'use client'
+import { Toaster } from '@/components/ui/toaster'
+import { NotificationToast } from './components/notification'
+import supabase from './utils/supabase'
 
-import { useEffect, useState } from "react";
+export default async function Home() {
+    const { data } = await supabase
+        .from('github_notifications')
+        .select('*')
+        .limit(5)
 
-
-
-export default function Home() {
-
-const [message, setMessage] = useState();
-
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`/api/github`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-
-      setMessage(data.message);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  fetchData(  )
-  return () => {
-  };
-}, []);
-
-const handleClick = async (e: React.MouseEvent<HTMLElement>) => {
-  e.preventDefault();
-  try {
-    const response = await fetch(`/api/github`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json()
-    setMessage(data);
-    
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
- test and {JSON.stringify(message)}
-    <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Sending POST</button>
-    </div>
-  );
+    return (
+        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen   font-[family-name:var(--font-geist-sans)]">
+            <NotificationToast data={data ?? []} />
+            <Toaster />
+        </div>
+    )
 }
